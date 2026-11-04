@@ -1,22 +1,20 @@
 # BioLock
 
-Sistema web de controle de acesso com autenticacao por senha e reconhecimento facial. O projeto foi desenvolvido como uma aplicacao academica em Python, com FastAPI, SQLite, SQLAlchemy, OpenCV e `face_recognition`.
+Aplicação web para controle de acesso usando senha e reconhecimento facial. O projeto foi desenvolvido em Python com FastAPI, SQLite, SQLAlchemy, OpenCV e `face_recognition`.
 
 ## Requisitos
 
-- Python 3.10 ou superior
-- Webcam acessivel pelo navegador
-- Linux, macOS ou Windows
-- Navegador com suporte a `getUserMedia`
+- Python 3.10 ou mais recente
+- Webcam acessível pelo navegador
+- Navegador com suporte à API `getUserMedia`
+- Dependências nativas necessárias pelo `dlib` para instalar o `face-recognition`
 
-A instalacao de `face-recognition` pode exigir ferramentas de compilacao e as dependencias nativas do `dlib`, especialmente em Linux.
+## Instalação
 
-## Instalacao
-
-Clone o repositorio e entre na pasta do projeto:
+Clone o repositório e entre na pasta do projeto:
 
 ```bash
-git clone <URL_DO_REPOSITORIO>
+git clone https://github.com/williamtorres64/BioLock.git
 cd BioLock
 ```
 
@@ -27,86 +25,86 @@ python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-No Windows PowerShell, use:
+No Windows PowerShell:
 
 ```powershell
 python -m venv .venv
-.venv\\Scripts\\Activate.ps1
+.venv\Scripts\Activate.ps1
 ```
 
-Instale as dependencias:
+Instale as dependências:
 
 ```bash
 python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 ```
 
-## Criando o primeiro administrador
+## Execução
 
-Use uma imagem local com exatamente um rosto reconhecivel:
-
-```bash
-python bootstrap_admin.py admin "Nome do Administrador" caminho/para/foto.jpg
-```
-
-A senha sera solicitada no terminal e nao sera exibida. O comando cria o banco `vault_security.db` e cadastra o administrador com nivel de acesso 100.
-
-A imagem usada no cadastro nao e copiada para o banco, mas o vetor numerico do rosto e armazenado como dado biometrico sensivel. Nao compartilhe o banco ou imagens de cadastro.
-
-## Executando a aplicacao
+Inicie o servidor em modo de desenvolvimento:
 
 ```bash
 python main.py
 ```
 
-Depois, abra [http://127.0.0.1:8000](http://127.0.0.1:8000) no navegador e permita o acesso a webcam.
+Depois, acesse [http://127.0.0.1:8000](http://127.0.0.1:8000) e permita o uso da webcam.
 
-Tambem e possivel iniciar diretamente com Uvicorn:
+Também é possível iniciar diretamente com o Uvicorn:
 
 ```bash
 uvicorn main:app --host 127.0.0.1 --port 8000 --reload
 ```
 
-O modo `--reload` e apropriado apenas para desenvolvimento.
+A opção `--reload` deve ser usada apenas durante o desenvolvimento.
 
-## Fluxo da aplicacao
+## Como o sistema funciona
 
-- A pagina inicial direciona para o cadastro do primeiro administrador quando ainda nao existe um administrador.
-- Novos usuarios podem solicitar cadastro com senha e referencia facial.
-- Um administrador aprova ou bloqueia usuarios e define os niveis de acesso.
-- O login exige senha e verificacao facial.
-- Cada tentativa de acesso e registrada no banco de auditoria.
-- Os niveis 1, 2 e 3 exibem areas com permissoes progressivas.
+1. O primeiro administrador é criado pelo fluxo de configuração inicial da aplicação.
+2. Novas pessoas solicitam o cadastro informando seus dados, uma senha e uma referência facial.
+3. Um administrador revisa os cadastros, aprova ou bloqueia contas e define o nível de acesso.
+4. O login confere a senha e compara o rosto capturado com a referência cadastrada.
+5. Cada tentativa de acesso é registrada no banco de auditoria.
+6. Os níveis 1, 2 e 3 liberam áreas com permissões progressivas; o nível 100 é reservado à administração.
+
+## Níveis de acesso
+
+- **Nível 1:** área de monitoramento e informações de rotina.
+- **Nível 2:** área gerencial e informações de controle.
+- **Nível 3:** área restrita para protocolos de maior sensibilidade.
+- **Nível 100:** painel administrativo para gerenciar usuários.
 
 ## Arquivos principais
 
-- `main.py`: rotas HTTP, autenticacao, sessoes e regras de acesso.
-- `database.py`: modelos e inicializacao do banco SQLite.
-- `vision_pipeline.py`: pipeline de deteccao e comparacao facial.
-- `bootstrap_admin.py`: criacao do primeiro administrador pela linha de comando.
-- `static/`: paginas HTML, CSS e JavaScript da aplicacao.
-- `requirements.txt`: dependencias Python.
+- `main.py`: rotas da aplicação, autenticação, sessões e regras de acesso.
+- `database.py`: modelos e inicialização do banco SQLite.
+- `vision_pipeline.py`: etapas de detecção, extração e comparação facial.
+- `static/`: páginas HTML.
+- `requirements.txt`: dependências do projeto.
 
-## Banco e dados locais
+## Banco de dados
 
-O banco SQLite e criado na raiz com o nome `vault_security.db`. Ele e ignorado pelo Git, assim como imagens, caches Python, ambientes virtuais e arquivos `.env`.
+O banco `vault_security.db` é criado automaticamente na raiz do projeto. Ele guarda usuários, referências biométricas e registros de auditoria.
 
-Para reiniciar os dados locais, pare a aplicacao e remova o banco:
+Para apagar os dados locais e começar novamente, pare a aplicação e execute:
 
 ```bash
 rm vault_security.db
 ```
 
-Esse comando apaga usuarios, perfis biometricos e registros de auditoria locais.
+Esse comando remove usuários, perfis biométricos e registros de auditoria.
 
-## Configuracao de seguranca
+## Configuração de segurança
 
-Este projeto nao utiliza arquivo `.env`. A chave de sessao possui um valor padrao definido no codigo para facilitar a execucao local. Isso e aceitavel somente para demonstracao ou desenvolvimento local; nao use essa configuracao em um ambiente publicado.
+A chave de sessão pode ser definida pela variável de ambiente `SESSION_SECRET`:
 
-Antes de disponibilizar o sistema em producao, substitua a chave padrao por uma configuracao segura, ative HTTPS, restrinja o cadastro publico, configure limites para imagens e trate erros internos sem devolve-los ao cliente.
+```bash
+export SESSION_SECRET="troque-esta-chave-em-um-ambiente-real"
+```
 
-Os dados biometricos e os registros de auditoria devem ser protegidos conforme as regras institucionais e a legislacao aplicavel.
+Para usar cookies seguros em HTTPS, defina também:
 
-## Estado do projeto
+```bash
+export SESSION_COOKIE_SECURE=true
+```
 
-Ainda nao existem testes automatizados ou pipeline de integracao continua. As proximas melhorias recomendadas sao adicionar testes para hash de senha, autenticacao, niveis de acesso, sessao e validacao das imagens.
+O valor padrão da chave existe apenas para facilitar testes locais. Antes de publicar o sistema, use uma chave própria e ative o HTTPS.
