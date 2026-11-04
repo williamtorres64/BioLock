@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nível 3 | BioLock</title>
+    <style>
+      @import url("https://fonts.cdnfonts.com/css/rawline");
+      :root {
+        --b90: #071d41;
+        --b70: #1351b4;
+        --g80: #333;
+        --g5: #f0f0f0;
+        --red: #e52207;
+        --red-light: #fde0db;
+        --white: #fff;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--g5);
+        color: var(--g80);
+        font:
+          14px/1.45 Rawline,
+          Raleway,
+          sans-serif;
+      }
+      .header {
+        background: var(--b90);
+        color: #fff;
+      }
+      .header-inner,
+      .main {
+        max-width: 1200px;
+        margin: auto;
+        padding-left: 40px;
+        padding-right: 40px;
+      }
+      .header-inner {
+        min-height: 72px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .brand {
+        font-weight: 600;
+      }
+      .alert {
+        background: var(--red);
+        color: #fff;
+        padding: 12px 5vw;
+        font-weight: 600;
+        font-size: 0.85rem;
+      }
+      .main {
+        padding-top: 56px;
+        padding-bottom: 56px;
+      }
+      .eyebrow {
+        color: var(--b70);
+        font-weight: 600;
+        font-size: 0.85rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+      .heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 32px;
+        margin-bottom: 32px;
+      }
+      .heading h1 {
+        font-size: 2.99em;
+        line-height: 1.15;
+        font-weight: 300;
+        color: var(--b90);
+        margin: 16px 0 0;
+        max-width: 760px;
+      }
+      .stamp {
+        border: 1px solid var(--red);
+        padding: 16px;
+        color: var(--red);
+        font-weight: 600;
+        font-size: 0.85rem;
+        text-align: right;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 24px;
+      }
+      .panel {
+        background: var(--white);
+        border: 1px solid #ccc;
+        padding: 32px;
+        box-shadow: 0 2px 6px #0002;
+      }
+      .panel h2 {
+        font-size: 1.728em;
+        font-weight: 400;
+        margin: 12px 0 16px;
+      }
+      .panel p {
+        line-height: 1.65;
+      }
+      .warning {
+        border-left: 4px solid var(--red);
+        background: var(--red-light);
+      }
+      .warning h2 {
+        color: #8b0a03;
+      }
+      .code {
+        margin-top: 24px;
+        padding-top: 16px;
+        border-top: 1px solid #d9aaa2;
+        font: 600 0.9rem/1.8 monospace;
+        color: #8b0a03;
+      }
+      .button {
+        display: inline-block;
+        margin-top: 24px;
+        padding: 12px 16px;
+        background: var(--red);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .button:hover {
+        background: #8b0a03;
+      }
+      @media (max-width: 768px) {
+        .header-inner,
+        .main {
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+        .heading {
+          display: block;
+        }
+        .stamp {
+          display: inline-block;
+          margin-top: 24px;
+        }
+        .heading h1 {
+          font-size: 2.48em;
+        }
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .panel {
+          padding: 24px 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-inner">
+        <span class="brand">BIOLOCK // ÁREA RESTRITA</span
+        ><span>STATUS: PRESENÇA AUTORIZADA</span>
+      </div>
+    </header>
+    <div class="alert">
+      Nível 3 // protocolo de contenção máxima // acesso integral registrado
+    </div>
+    <main class="main">
+      <div class="eyebrow">
+        Faixa restrita 03 // informação de risco extremo
+      </div>
+      <section class="heading">
+        <h1>Arquivo de contenção ambiental crítica</h1>
+        <div class="stamp">CLASSIFICAÇÃO<br />MÁXIMA / 03</div>
+      </section>
+      <section class="grid">
+        <article class="panel warning">
+          <div class="eyebrow">Atenção operacional</div>
+          <h2>Esta área exige responsabilidade institucional máxima.</h2>
+          <p>
+            Os protocolos de risco extremo permanecem sob custódia do
+            Ministério. Toda consulta, exportação ou alteração é registrada.
+          </p>
+          <div class="code">
+            ÁREA: BIOLOCK-04<br />CONTENÇÃO: ATIVA<br />INTEGRIDADE: VERIFICADA
+          </div>
+        </article>
+        <aside class="panel">
+          <div class="eyebrow">Sessão autorizada</div>
+          <h2>Operador validado</h2>
+          <p>
+            Você possui autorização máxima para consulta dos protocolos
+            criticos.
+          </p>
+          <a class="button" href="/api/logout">Bloquear cofre e sair</a>
+        </aside>
+      </section>
+    </main>
+  </body>
+</html>

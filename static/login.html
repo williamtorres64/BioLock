@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Acesso | BioLock</title>
+    <style>
+      @import url("https://fonts.cdnfonts.com/css/rawline");
+      :root {
+        --b90: #071d41;
+        --b80: #0c326f;
+        --b70: #1351b4;
+        --b10: #d4e5ff;
+        --g80: #333;
+        --g5: #f0f0f0;
+        --line: #aaa;
+        --white: #fff;
+        --success: #168821;
+        --error: #e52207;
+        --warn: #ffcd07;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--g5);
+        color: var(--g80);
+        font:
+          14px/1.45 Rawline,
+          Raleway,
+          sans-serif;
+      }
+      .bar {
+        height: 8px;
+        background: var(--b70);
+      }
+      .header {
+        background: var(--b90);
+        color: #fff;
+      }
+      .header-inner,
+      .layout {
+        max-width: 1200px;
+        margin: auto;
+        padding: 0 40px;
+      }
+      .header-inner {
+        min-height: 72px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .brand {
+        font-weight: 600;
+      }
+      .meta {
+        font-size: 0.85rem;
+      }
+      .layout {
+        display: grid;
+        grid-template-columns: 5fr 7fr;
+        gap: 40px;
+        padding-top: 56px;
+        padding-bottom: 56px;
+      }
+      .intro h1 {
+        font-size: 2.99em;
+        line-height: 1.15;
+        font-weight: 300;
+        color: var(--b90);
+        margin: 24px 0 16px;
+      }
+      .eyebrow,
+      label {
+        font-weight: 600;
+        font-size: 0.85rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+      .eyebrow {
+        color: var(--b70);
+      }
+      .intro p {
+        max-width: 470px;
+        font-size: 1.15em;
+      }
+      .info {
+        margin-top: 32px;
+        border-left: 4px solid var(--warn);
+        padding: 16px;
+        background: #fff;
+      }
+      .panel {
+        background: #fff;
+        border: 1px solid #ccc;
+        padding: 32px;
+        box-shadow: 0 2px 6px #0002;
+      }
+      .panel h2 {
+        margin: 0;
+        color: var(--g80);
+        font-size: 2.07em;
+        font-weight: 400;
+      }
+      .rule {
+        width: 48px;
+        border-top: 4px solid var(--b70);
+        margin: 24px 0;
+      }
+      .field {
+        margin: 24px 0;
+      }
+      label {
+        display: block;
+        margin-bottom: 8px;
+      }
+      input {
+        display: block;
+        width: 100%;
+        min-height: 48px;
+        padding: 12px;
+        border: 1px solid var(--line);
+        font:
+          1rem Rawline,
+          Raleway,
+          sans-serif;
+        color: var(--g80);
+      }
+      input:focus {
+        outline: 3px dashed #c2850c;
+        outline-offset: 3px;
+        border-color: var(--b70);
+      }
+      .camera {
+        padding: 16px;
+        background: var(--b90);
+        color: #fff;
+      }
+      .camera-head {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 12px;
+        font-size: 0.85rem;
+      }
+      .live {
+        color: #c5ee93;
+      }
+      video {
+        display: block;
+        width: 100%;
+        height: 280px;
+        background: #000;
+        object-fit: cover;
+      }
+      .button {
+        width: 100%;
+        min-height: 48px;
+        margin-top: 24px;
+        padding: 12px 16px;
+        border: 0;
+        background: var(--b70);
+        color: #fff;
+        font:
+          600 0.95rem Rawline,
+          Raleway,
+          sans-serif;
+        cursor: pointer;
+      }
+      .button:hover {
+        background: var(--b80);
+      }
+      .status {
+        min-height: 28px;
+        margin-top: 16px;
+      }
+      .back {
+        display: inline-block;
+        margin-top: 24px;
+        color: var(--b70);
+        text-decoration: underline;
+      }
+      @media (max-width: 768px) {
+        .header-inner,
+        .layout {
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+        .meta {
+          display: none;
+        }
+        .layout {
+          display: block;
+          padding-top: 32px;
+        }
+        .intro h1 {
+          font-size: 2.48em;
+        }
+        .panel {
+          padding: 24px 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bar"></div>
+    <header class="header">
+      <div class="header-inner">
+        <span class="brand">BIOLOCK // AUTENTICAÇÃO</span
+        ><span class="meta">Ministério do Meio Ambiente</span>
+      </div>
+    </header>
+    <main class="layout">
+      <section class="intro">
+        <div class="eyebrow">Dupla verificação de identidade</div>
+        <h1>Acesso somente ao que você está autorizado a consultar.</h1>
+        <p>
+          A senha identifica o operador. A leitura facial confirma sua presença
+          antes da abertura da área protegida.
+        </p>
+        <p class="info">
+          <strong>Privacidade:</strong> a imagem não é armazenada. O resultado
+          da verificação e o evento de acesso são registrados.
+        </p>
+      </section>
+      <section class="panel">
+        <div class="eyebrow">Credencial funcional</div>
+        <h2>Entrar no sistema</h2>
+        <div class="rule"></div>
+        <div class="field">
+          <label for="username">Nome de usuário</label
+          ><input id="username" type="text" autocomplete="username" required />
+        </div>
+        <div class="field">
+          <label for="password">Senha</label
+          ><input
+            id="password"
+            type="password"
+            autocomplete="current-password"
+            required
+          />
+        </div>
+        <div class="camera">
+          <div class="camera-head">
+            <span>Leitura facial</span><span class="live">● aguardando</span>
+          </div>
+          <video id="webcam" autoplay playsinline></video
+          ><canvas id="canvas" style="display: none"></canvas>
+        </div>
+        <button class="button" id="captureBtn">Entrar e validar rosto</button>
+        <div id="status" class="status"></div>
+        <a class="back" href="/">Voltar ao portal</a>
+      </section>
+    </main>
+    <script>
+      const video = document.getElementById("webcam"),
+        canvas = document.getElementById("canvas"),
+        button = document.getElementById("captureBtn"),
+        statusDiv = document.getElementById("status");
+      navigator.mediaDevices
+        .getUserMedia({ video: true })
+        .then((stream) => {
+          video.srcObject = stream;
+        })
+        .catch(() => {
+          statusDiv.style.color = "#e52207";
+          statusDiv.textContent = "Não foi possível acessar a câmera.";
+        });
+      button.addEventListener("click", async () => {
+        const username = document.getElementById("username").value.trim(),
+          password = document.getElementById("password").value;
+        if (!username || !password) {
+          statusDiv.style.color = "#a46d20";
+          statusDiv.textContent = "Informe o nome de usuário e a senha.";
+          return;
+        }
+        if (!video.videoWidth) {
+          statusDiv.style.color = "#e52207";
+          statusDiv.textContent = "A câmera ainda não está pronta.";
+          return;
+        }
+        statusDiv.textContent = "Conferindo seus dados e a leitura facial...";
+        statusDiv.style.color = "#333";
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        canvas
+          .getContext("2d")
+          .drawImage(video, 0, 0, canvas.width, canvas.height);
+        try {
+          const response = await fetch("/api/authenticate", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              username,
+              password,
+              image_data: canvas.toDataURL("image/jpeg"),
+            }),
+          });
+          const result = await response.json();
+          if (response.ok && result.success) {
+            statusDiv.style.color = "#168821";
+            statusDiv.textContent = `Identidade confirmada. Abrindo seu acesso, ${result.name}...`;
+            setTimeout(() => {
+              window.location.href = result.redirect_url;
+            }, 900);
+          } else {
+            statusDiv.style.color = "#e52207";
+            statusDiv.textContent =
+              result.message || result.detail || "Acesso recusado.";
+          }
+        } catch {
+          statusDiv.style.color = "#e52207";
+          statusDiv.textContent = "Não foi possível falar com o servidor.";
+        }
+      });
+    </script>
+  </body>
+</html>

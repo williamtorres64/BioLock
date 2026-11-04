@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nível 2 | BioLock</title>
+    <style>
+      @import url("https://fonts.cdnfonts.com/css/rawline");
+      :root {
+        --b90: #071d41;
+        --b70: #1351b4;
+        --g80: #333;
+        --g5: #f0f0f0;
+        --g10: #e6e6e6;
+        --yellow: #ffcd07;
+        --yellow-light: #fff5c2;
+        --white: #fff;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--g5);
+        color: var(--g80);
+        font:
+          14px/1.45 Rawline,
+          Raleway,
+          sans-serif;
+      }
+      .header {
+        background: var(--b90);
+        color: #fff;
+      }
+      .header-inner,
+      .main {
+        max-width: 1200px;
+        margin: auto;
+        padding-left: 40px;
+        padding-right: 40px;
+      }
+      .header-inner {
+        min-height: 72px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .brand {
+        font-weight: 600;
+      }
+      .main {
+        padding-top: 56px;
+        padding-bottom: 56px;
+      }
+      .eyebrow {
+        color: var(--b70);
+        font-weight: 600;
+        font-size: 0.85rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+      .heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 32px;
+        margin-bottom: 32px;
+      }
+      .heading h1 {
+        font-size: 2.99em;
+        line-height: 1.15;
+        font-weight: 300;
+        color: var(--b90);
+        margin: 16px 0 0;
+      }
+      .stamp {
+        border: 1px solid var(--b70);
+        padding: 16px;
+        color: var(--b70);
+        font-weight: 600;
+        font-size: 0.85rem;
+        text-align: right;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+      .panel {
+        background: var(--white);
+        border: 1px solid #ccc;
+        padding: 32px;
+        min-height: 190px;
+        box-shadow: 0 2px 6px #0002;
+      }
+      .panel h2 {
+        font-size: 1.728em;
+        font-weight: 400;
+        margin: 12px 0;
+      }
+      .panel p {
+        line-height: 1.6;
+      }
+      .number {
+        font-size: 2.488em;
+        color: var(--b70);
+        font-weight: 300;
+      }
+      .wide {
+        grid-column: span 2;
+      }
+      .audit {
+        border-top: 4px solid var(--yellow);
+        background: var(--yellow-light);
+      }
+      .button {
+        display: inline-block;
+        margin-top: 24px;
+        padding: 12px 16px;
+        background: var(--b70);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .button:hover {
+        background: var(--b90);
+      }
+      @media (max-width: 768px) {
+        .header-inner,
+        .main {
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+        .heading {
+          display: block;
+        }
+        .stamp {
+          display: inline-block;
+          margin-top: 24px;
+        }
+        .heading h1 {
+          font-size: 2.48em;
+        }
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .wide {
+          grid-column: auto;
+        }
+        .panel {
+          padding: 24px 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-inner">
+        <span class="brand">BIOLOCK // DIRETORIA DE CONTROLE</span
+        ><span>STATUS: ACESSO RESTRITO</span>
+      </div>
+    </header>
+    <main class="main">
+      <div class="eyebrow">Faixa gerencial 02 // informação confidencial</div>
+      <section class="heading">
+        <h1>Gestao de divisao</h1>
+        <div class="stamp">NÍVEL DE ACESSO<br />DIRETORIA / 02</div>
+      </section>
+      <section class="grid">
+        <article class="panel">
+          <div class="number">18</div>
+          <h2>Operacoes em curso</h2>
+          <p>
+            Frentes de monitoramento que exigem coordenação entre unidades
+            tecnicas.
+          </p>
+        </article>
+        <article class="panel">
+          <div class="number">04</div>
+          <h2>Alertas para revisão</h2>
+          <p>Ocorrências classificadas para análise gerencial.</p>
+        </article>
+        <article class="panel wide">
+          <div class="eyebrow">Resumo de controle</div>
+          <h2>Integridade dos protocolos de contenção</h2>
+          <p>
+            Registros de transporte, armazenamento e resposta permanecem dentro
+            das janelas operacionais autorizadas.
+          </p>
+        </article>
+        <article class="panel audit">
+          <div class="eyebrow">Auditoria</div>
+          <h2>Trilha registrada</h2>
+          <p>Esta sessão está vinculada ao operador autenticado.</p>
+          <a class="button" href="/api/logout">Encerrar sessão</a>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>

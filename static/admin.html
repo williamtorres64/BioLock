@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Governança | BioLock</title>
+    <style>
+      @import url("https://fonts.cdnfonts.com/css/rawline");
+      :root {
+        --b90: #071d41;
+        --b80: #0c326f;
+        --b70: #1351b4;
+        --b10: #d4e5ff;
+        --g80: #333;
+        --g5: #f0f0f0;
+        --g10: #e6e6e6;
+        --green: #168821;
+        --yellow: #ffcd07;
+        --white: #fff;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--g5);
+        color: var(--g80);
+        font:
+          14px/1.45 Rawline,
+          Raleway,
+          sans-serif;
+      }
+      .header {
+        background: var(--b90);
+        color: #fff;
+      }
+      .header-inner,
+      .main {
+        max-width: 1280px;
+        margin: auto;
+        padding-left: 40px;
+        padding-right: 40px;
+      }
+      .header-inner {
+        min-height: 72px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .brand {
+        font-weight: 600;
+      }
+      .main {
+        padding-top: 48px;
+        padding-bottom: 56px;
+      }
+      .heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 32px;
+      }
+      .eyebrow {
+        color: var(--b70);
+        font-weight: 600;
+        font-size: 0.85rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+      .heading h1 {
+        font-size: 2.99em;
+        line-height: 1.15;
+        font-weight: 300;
+        color: var(--b90);
+        margin: 16px 0 0;
+      }
+      .actions {
+        display: flex;
+        gap: 16px;
+      }
+      .tabs {
+        display: flex;
+        gap: 8px;
+        margin: 32px 0 16px;
+        border-bottom: 1px solid #ccc;
+      }
+      .tab {
+        min-height: 44px;
+        padding: 10px 16px;
+        border: 1px solid transparent;
+        border-bottom: 3px solid transparent;
+        background: transparent;
+        color: var(--g80);
+        font:
+          600 0.9rem Rawline,
+          Raleway,
+          sans-serif;
+        cursor: pointer;
+      }
+      .tab:hover,
+      .tab.active {
+        color: var(--b70);
+        border-bottom-color: var(--b70);
+      }
+      .tab-panel[hidden] {
+        display: none;
+      }
+      .button {
+        min-height: 44px;
+        padding: 10px 16px;
+        border: 1px solid var(--b70);
+        background: var(--b70);
+        color: #fff;
+        font:
+          600 0.9rem Rawline,
+          Raleway,
+          sans-serif;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .button.outline {
+        background: #fff;
+        color: var(--b70);
+      }
+      .button:hover {
+        background: var(--b80);
+        color: #fff;
+      }
+      .legend {
+        display: flex;
+        gap: 24px;
+        padding: 24px 0;
+        color: var(--g80);
+      }
+      .legend .ok {
+        color: var(--green);
+        font-weight: 600;
+      }
+      .legend .pending {
+        color: #947100;
+        font-weight: 600;
+      }
+      #status {
+        min-height: 24px;
+        margin-bottom: 16px;
+        margin-top: 16px;
+      }
+      .panel {
+        background: var(--white);
+        border: 1px solid #ccc;
+        overflow: auto;
+        box-shadow: 0 2px 6px #0002;
+      }
+      table {
+        width: 100%;
+        min-width: 820px;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        padding: 16px;
+        text-align: left;
+        border-bottom: 1px solid var(--g10);
+      }
+      th {
+        background: var(--b90);
+        color: #fff;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+      tr:hover td {
+        background: var(--b10);
+      }
+      input,
+      select {
+        width: 100%;
+        min-height: 40px;
+        padding: 8px;
+        border: 1px solid #aaa;
+        background: #fff;
+        color: var(--g80);
+        font:
+          14px Rawline,
+          Raleway,
+          sans-serif;
+      }
+      input:focus,
+      select:focus,
+      button:focus-visible,
+      a:focus-visible {
+        outline: 3px dashed #c2850c;
+        outline-offset: 3px;
+      }
+      .save {
+        background: var(--green);
+        border-color: var(--green);
+      }
+      .save:hover {
+        background: #0f6b19;
+      }
+      @media (max-width: 768px) {
+        .header-inner,
+        .main {
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+        .header-inner span:last-child {
+          display: none;
+        }
+        .heading {
+          display: block;
+        }
+        .actions {
+          margin-top: 24px;
+          flex-wrap: wrap;
+        }
+        .legend {
+          display: block;
+        }
+        .legend span {
+          display: block;
+          margin: 8px 0;
+        }
+        .main {
+          padding-top: 32px;
+        }
+        .heading h1 {
+          font-size: 2.48em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-inner">
+        <span class="brand">BIOLOCK // GOVERNANÇA DE ACESSO</span
+        ><span>ADMINISTRAÇÃO</span>
+      </div>
+    </header>
+    <main class="main">
+      <section class="heading">
+        <div>
+          <div class="eyebrow">Controle de contas e permissões</div>
+          <h1>Painel de governança</h1>
+        </div>
+        <div class="actions">
+          <button class="button outline" id="reloadBtn">Atualizar lista</button>
+          <a class="button" href="/static/admin-setup.html?modo=novo"
+            >Novo administrador </a
+          ><a class="button" href="/api/logout">Encerrar sessão</a>
+        </div>
+      </section>
+
+      <div id="status" role="status" aria-live="polite"></div>
+      <nav class="tabs" aria-label="Seções administrativas">
+        <button class="tab active" type="button" data-tab="usersPanel">
+          Usuários
+        </button>
+        <button class="tab" type="button" data-tab="logsPanel">
+          Logs de acesso
+        </button>
+      </nav>
+      <section class="panel tab-panel" id="usersPanel">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Identificador</th>
+              <th>Nome completo</th>
+              <th>Nível</th>
+              <th>Aprovação</th>
+              <th>Ativo</th>
+              <th>Ação</th>
+            </tr>
+          </thead>
+          <tbody id="usersBody"></tbody>
+        </table>
+      </section>
+      <section class="panel tab-panel" id="logsPanel" hidden>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Data e hora</th>
+              <th>Usuário</th>
+              <th>Resultado</th>
+              <th>Confiança</th>
+              <th>Endereço IP</th>
+              <th>Observação</th>
+            </tr>
+          </thead>
+          <tbody id="logsBody"></tbody>
+        </table>
+      </section>
+    </main>
+    <script>
+      const body = document.getElementById("usersBody"),
+        logsBody = document.getElementById("logsBody"),
+        status = document.getElementById("status");
+      function option(value, label, selected) {
+        return `<option value="${value}" ${selected ? "selected" : ""}>${label}</option>`;
+      }
+      function escapeHtml(value) {
+        return String(value).replace(
+          /[&<>"']/g,
+          (character) =>
+            ({
+              "&": "&amp;",
+              "<": "&lt;",
+              ">": "&gt;",
+              '"': "&quot;",
+              "'": "&#39;",
+            })[character],
+        );
+      }
+      function renderUsers(users) {
+        body.innerHTML = users
+          .map(
+            (user) =>
+              `<tr data-id="${user.id}"><td>${escapeHtml(user.id)}</td><td>${escapeHtml(user.username)}</td><td><input class="name" value="${escapeHtml(user.full_name)}"></td><td><select class="level">${option(1, "01 - Monitoramento", user.access_level === 1)}${option(2, "02 - Diretoria", user.access_level === 2)}${option(3, "03 - Área restrita", user.access_level === 3)}${option(100, "100 - Administração", user.access_level === 100)}</select></td><td><select class="approved">${option("true", "Aprovado", user.approved)}${option("false", "Pendente", !user.approved)}</select></td><td><select class="active">${option("true", "Ativo", user.is_active)}${option("false", "Bloqueado", !user.is_active)}</select></td><td><button class="button save">Aplicar</button></td></tr>`,
+          )
+          .join("");
+        body
+          .querySelectorAll(".save")
+          .forEach((button) => button.addEventListener("click", saveUser));
+      }
+      async function loadUsers() {
+        status.textContent = "Atualizando lista...";
+        const response = await fetch("/api/admin/users");
+        if (response.status === 401 || response.status === 403) {
+          window.location.href = "/";
+          return;
+        }
+        const result = await response.json();
+        renderUsers(result.users);
+        status.textContent = "Lista atualizada.";
+      }
+      function formatDate(value) {
+        return new Date(value).toLocaleString("pt-BR");
+      }
+      function formatConfidence(value) {
+        return value === null || value === undefined
+          ? "-"
+          : `${(Number(value) * 100).toFixed(1)}%`;
+      }
+      function renderLogs(logs) {
+        logsBody.innerHTML = logs
+          .map(
+            (log) =>
+              `<tr><td>${escapeHtml(log.id)}</td><td>${escapeHtml(formatDate(log.timestamp))}</td><td>${escapeHtml(log.username)}</td><td>${log.access_granted ? '<strong style="color:#168821">Autorizado</strong>' : '<strong style="color:#e52207">Recusado</strong>'}</td><td>${escapeHtml(formatConfidence(log.confidence_score))}</td><td>${escapeHtml(log.ip_address)}</td><td>${escapeHtml(log.failure_reason || "-")}</td></tr>`,
+          )
+          .join("");
+      }
+      async function loadLogs() {
+        status.textContent = "Carregando logs de acesso...";
+        const response = await fetch("/api/admin/logs");
+        if (response.status === 401 || response.status === 403) {
+          window.location.href = "/";
+          return;
+        }
+        const result = await response.json();
+        renderLogs(result.logs);
+        status.textContent = "Logs carregados.";
+      }
+      async function saveUser(event) {
+        const row = event.target.closest("tr");
+        const payload = {
+          full_name: row.querySelector(".name").value,
+          access_level: Number(row.querySelector(".level").value),
+          approved: row.querySelector(".approved").value === "true",
+          is_active: row.querySelector(".active").value === "true",
+        };
+        const response = await fetch(`/api/admin/users/${row.dataset.id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const result = await response.json();
+        status.textContent =
+          result.message || result.detail || "Ação concluída.";
+        if (response.ok) await loadUsers();
+      }
+      document.getElementById("reloadBtn").addEventListener("click", () => {
+        const activeTab = document.querySelector(".tab.active").dataset.tab;
+        (activeTab === "logsPanel" ? loadLogs : loadUsers)().catch(() => {
+          status.textContent = "Não foi possível atualizar os dados.";
+        });
+      });
+      document.querySelectorAll(".tab").forEach((tab) => {
+        tab.addEventListener("click", () => {
+          document.querySelectorAll(".tab").forEach((item) => {
+            item.classList.toggle("active", item === tab);
+          });
+          document.querySelectorAll(".tab-panel").forEach((panel) => {
+            panel.hidden = panel.id !== tab.dataset.tab;
+          });
+          if (tab.dataset.tab === "logsPanel") {
+            loadLogs().catch(() => {
+              status.textContent = "Não foi possível carregar os logs.";
+            });
+          } else {
+            loadUsers().catch(() => {
+              status.textContent = "Não foi possível atualizar a lista.";
+            });
+          }
+        });
+      });
+      loadUsers().catch(() => {
+        status.textContent = "Não foi possível atualizar a lista.";
+      });
+    </script>
+  </body>
+</html>

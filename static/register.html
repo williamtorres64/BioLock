@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cadastro de usuário | BioLock</title>
+    <style>
+      @import url("https://fonts.cdnfonts.com/css/rawline");
+
+      :root {
+        --blue-90: #071d41;
+        --blue-80: #0c326f;
+        --blue-70: #1351b4;
+        --blue-10: #d4e5ff;
+        --gray-80: #333333;
+        --gray-50: #757575;
+        --gray-10: #e6e6e6;
+        --gray-5: #f0f0f0;
+        --white: #ffffff;
+        --green: #168821;
+        --green-light: #e3f5e1;
+        --yellow: #ffcd07;
+        --yellow-light: #fff5c2;
+        --red: #e52207;
+        --focus: #c2850c;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        font-size: 14px;
+      }
+      body {
+        margin: 0;
+        background: var(--gray-5);
+        color: var(--gray-80);
+        font:
+          1rem/1.45 Rawline,
+          Raleway,
+          sans-serif;
+      }
+      a {
+        color: var(--blue-70);
+      }
+      a:focus-visible,
+      button:focus-visible,
+      input:focus-visible,
+      select:focus-visible {
+        outline: 3px dashed var(--focus);
+        outline-offset: 4px;
+      }
+
+      .gov-bar {
+        height: 8px;
+        background: var(--blue-70);
+      }
+      .header {
+        background: var(--blue-90);
+        color: var(--white);
+      }
+      .header-inner,
+      .page {
+        width: min(1200px, 100%);
+        margin: 0 auto;
+        padding-left: 40px;
+        padding-right: 40px;
+      }
+      .header-inner {
+        min-height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+      .brand {
+        font-weight: 600;
+        letter-spacing: 0.02em;
+      }
+      .header-note {
+        color: #d4e5ff;
+        font-size: 0.9rem;
+      }
+
+      .page {
+        display: grid;
+        grid-template-columns: 5fr 7fr;
+        gap: 40px;
+        padding-top: 56px;
+        padding-bottom: 64px;
+      }
+      .intro {
+        padding-top: 8px;
+      }
+      .eyebrow {
+        color: var(--blue-70);
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+      h1 {
+        margin: 24px 0 16px;
+        color: var(--blue-90);
+        font-size: 2.99em;
+        font-weight: 300;
+        line-height: 1.15;
+      }
+      .intro-copy {
+        max-width: 480px;
+        font-size: 1.2em;
+      }
+      .notice {
+        max-width: 480px;
+        margin-top: 32px;
+        padding: 16px;
+        border-left: 4px solid var(--yellow);
+        background: var(--white);
+      }
+      .notice strong {
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .panel {
+        padding: 32px;
+        border: 1px solid #cccccc;
+        background: var(--white);
+        box-shadow: 0 2px 6px #0002;
+      }
+      .panel h2 {
+        margin: 0;
+        color: var(--gray-80);
+        font-size: 2.07em;
+        font-weight: 400;
+      }
+      .rule {
+        width: 48px;
+        margin: 24px 0;
+        border-top: 4px solid var(--blue-70);
+      }
+      fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+      }
+      legend {
+        margin-bottom: 16px;
+        color: var(--blue-90);
+        font-size: 1.2em;
+        font-weight: 600;
+      }
+      .fields {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 16px;
+      }
+      .field {
+        margin: 12px 0 16px;
+      }
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+      }
+      input,
+      select {
+        display: block;
+        width: 100%;
+        min-height: 48px;
+        padding: 12px;
+        border: 1px solid var(--gray-50);
+        border-radius: 4px;
+        background: var(--white);
+        color: var(--gray-80);
+        font:
+          1rem Rawline,
+          Raleway,
+          sans-serif;
+      }
+      input::placeholder {
+        color: var(--gray-50);
+      }
+      .hint {
+        display: block;
+        margin-top: 4px;
+        color: var(--gray-50);
+        font-size: 0.9rem;
+      }
+
+      .camera {
+        margin-top: 24px;
+        padding: 16px;
+        background: var(--blue-90);
+        color: var(--white);
+      }
+      .camera-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 12px;
+        font-size: 0.9rem;
+      }
+      .camera-state {
+        color: #c5ee93;
+      }
+      .camera-frame {
+        position: relative;
+        background: #000000;
+      }
+      .camera-frame::before {
+        content: "ÁREA DE CAPTURA";
+        position: absolute;
+        z-index: 1;
+        top: 12px;
+        left: 12px;
+        padding: 4px 8px;
+        background: #071d41cc;
+        color: var(--white);
+        font-size: 0.75rem;
+        letter-spacing: 0.05em;
+      }
+      video {
+        display: block;
+        width: 100%;
+        height: 230px;
+        background: #000000;
+        object-fit: cover;
+        transform: scaleX(-1);
+      }
+      .camera-button,
+      .submit {
+        width: 100%;
+        min-height: 48px;
+        padding: 12px;
+        border: 2px solid transparent;
+        border-radius: 4px;
+        font:
+          600 0.95rem Rawline,
+          Raleway,
+          sans-serif;
+        cursor: pointer;
+      }
+      .camera-button {
+        margin-top: 12px;
+        background: var(--blue-10);
+        color: var(--blue-90);
+      }
+      .camera-button:hover {
+        background: var(--white);
+      }
+      .camera-button.captured {
+        background: var(--green);
+        color: var(--white);
+      }
+      .submit {
+        margin-top: 24px;
+        background: var(--blue-70);
+        color: var(--white);
+      }
+      .submit:hover {
+        background: var(--blue-80);
+      }
+      .submit:disabled {
+        cursor: not-allowed;
+        opacity: 0.6;
+      }
+      .status {
+        min-height: 28px;
+        margin-top: 16px;
+        padding: 8px 0;
+      }
+      .status.success {
+        color: var(--green);
+      }
+      .status.warning {
+        color: #947100;
+      }
+      .status.error {
+        color: var(--red);
+      }
+      .back {
+        display: inline-block;
+        margin-top: 24px;
+        text-decoration: underline;
+      }
+
+      @media (max-width: 768px) {
+        .header-inner,
+        .page {
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+        .header-note {
+          display: none;
+        }
+        .page {
+          display: block;
+          padding-top: 32px;
+        }
+        h1 {
+          font-size: 2.48em;
+        }
+        .fields {
+          grid-template-columns: 1fr;
+        }
+        .panel {
+          margin-top: 32px;
+          padding: 24px 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="gov-bar"></div>
+    <header class="header">
+      <div class="header-inner">
+        <span class="brand">BIOLOCK // SOLICITAÇÃO DE CADASTRO</span>
+        <span class="header-note">Ministério do Meio Ambiente</span>
+      </div>
+    </header>
+
+    <main class="page">
+      <section class="intro" aria-labelledby="page-title">
+        <div class="eyebrow">Cadastro de pessoal // formulário inicial</div>
+        <h1 id="page-title">Todo acesso começa com uma solicitação.</h1>
+        <p class="intro-copy">
+          Informe seus dados e registre sua referência biométrica. A credencial
+          fica pendente até a revisão de um administrador.
+        </p>
+        <div class="notice">
+          <strong>Estado inicial</strong>
+          <span
+            >Pendente de aprovação. O nível selecionado é apenas uma faixa
+            solicitada.</span
+          >
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="form-title">
+        <div class="eyebrow">Novo cadastro</div>
+        <h2 id="form-title">Solicitar acesso</h2>
+        <div class="rule"></div>
+
+        <form id="registerForm">
+          <fieldset>
+            <legend>Dados do usuário</legend>
+            <div class="fields">
+              <div class="field">
+                <label for="username">Nome de usuário</label>
+                <input
+                  id="username"
+                  name="username"
+                  autocomplete="username"
+                  required
+                  placeholder="nome.funcional"
+                />
+                <small class="hint"
+                  >Use o nome informado pela sua instituição.</small
+                >
+              </div>
+              <div class="field">
+                <label for="fullName">Nome completo</label>
+                <input
+                  id="fullName"
+                  name="fullName"
+                  autocomplete="name"
+                  required
+                  placeholder="Digite seu nome"
+                />
+              </div>
+              <div class="field">
+                <label for="password">Senha</label>
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autocomplete="new-password"
+                  minlength="8"
+                  required
+                  placeholder="Crie uma senha"
+                />
+                <small class="hint">Mínimo de 8 caracteres.</small>
+              </div>
+              <div class="field">
+                <label for="accessLevel">Nível solicitado</label>
+                <select id="accessLevel" name="accessLevel">
+                  <option value="1">Nível 1 - Monitoramento</option>
+                  <option value="2">Nível 2 - Diretoria</option>
+                  <option value="3">Nível 3 - Área restrita</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Referência biométrica</legend>
+            <div class="camera">
+              <div class="camera-head">
+                <span>Câmera do dispositivo</span>
+                <span id="cameraState" class="camera-state"
+                  >● aguardando câmera</span
+                >
+              </div>
+              <div class="camera-frame">
+                <video
+                  id="webcam"
+                  autoplay
+                  playsinline
+                  aria-label="Câmera para captura da referência facial"
+                ></video>
+              </div>
+              <canvas id="canvas" hidden></canvas>
+              <button type="button" class="camera-button" id="snapBtn">
+                Capturar referência facial
+              </button>
+            </div>
+          </fieldset>
+
+          <button type="submit" class="submit" id="registerBtn">
+            Enviar para análise
+          </button>
+          <div
+            id="status"
+            class="status"
+            role="status"
+            aria-live="polite"
+          ></div>
+        </form>
+        <a class="back" href="/">Voltar ao portal</a>
+      </section>
+    </main>
+
+    <script>
+      const form = document.getElementById("registerForm");
+      const video = document.getElementById("webcam");
+      const canvas = document.getElementById("canvas");
+      const snapButton = document.getElementById("snapBtn");
+      const registerButton = document.getElementById("registerBtn");
+      const status = document.getElementById("status");
+      const cameraState = document.getElementById("cameraState");
+      let capturedImageData = null;
+
+      function setStatus(message, type = "") {
+        status.textContent = message;
+        status.className = `status ${type}`;
+      }
+
+      navigator.mediaDevices
+        .getUserMedia({ video: true })
+        .then((stream) => {
+          video.srcObject = stream;
+          cameraState.textContent = "● câmera pronta";
+        })
+        .catch(() => {
+          cameraState.textContent = "● câmera indisponível";
+          cameraState.style.color = "#ff8d7b";
+          setStatus("Não foi possível acessar a câmera.", "error");
+        });
+
+      snapButton.addEventListener("click", () => {
+        if (!video.videoWidth) {
+          setStatus("A câmera ainda não está pronta.", "warning");
+          return;
+        }
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        canvas
+          .getContext("2d")
+          .drawImage(video, 0, 0, canvas.width, canvas.height);
+        capturedImageData = canvas.toDataURL("image/jpeg");
+        snapButton.textContent = "Referência capturada";
+        snapButton.classList.add("captured");
+        cameraState.textContent = "● captura confirmada";
+        setStatus(
+          "Referência facial capturada. Revise os dados antes de enviar.",
+          "success",
+        );
+      });
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        if (!capturedImageData) {
+          setStatus(
+            "Capture a referência facial antes de enviar o cadastro.",
+            "warning",
+          );
+          return;
+        }
+
+        registerButton.disabled = true;
+        setStatus("Salvando cadastro e analisando o rosto...");
+        try {
+          const response = await fetch("/api/register", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              username: document.getElementById("username").value.trim(),
+              full_name: document.getElementById("fullName").value.trim(),
+              password: document.getElementById("password").value,
+              access_level: parseInt(
+                document.getElementById("accessLevel").value,
+                10,
+              ),
+              image_data: capturedImageData,
+            }),
+          });
+          const result = await response.json();
+          if (response.ok && result.success) {
+            setStatus(
+              "Cadastro enviado. Aguarde a aprovação do administrador.",
+              "success",
+            );
+            setTimeout(() => {
+              window.location.href = "/static/login.html";
+            }, 1600);
+          } else {
+            setStatus(
+              result.message ||
+                result.detail ||
+                "Não foi possível concluir o cadastro.",
+              "error",
+            );
+          }
+        } catch {
+          setStatus("Não foi possível falar com o servidor.", "error");
+        } finally {
+          registerButton.disabled = false;
+        }
+      });
+    </script>
+  </body>
+</html>
