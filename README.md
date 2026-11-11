@@ -107,4 +107,4 @@ Para usar cookies seguros em HTTPS, defina também:
 export SESSION_COOKIE_SECURE=true
 ```
 
-O valor padrão da chave existe apenas para facilitar testes locais. Antes de publicar o sistema, use uma chave própria e ative o HTTPS.
+O valor padrão da chave existe apenas para facilitar testes locais. Em um cenário de produção real, seria utilizada uma chave própria e ativado o HTTPS.
